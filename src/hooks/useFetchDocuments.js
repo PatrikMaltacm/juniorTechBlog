@@ -27,8 +27,15 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                 // busca
                 // dashboard
 
-                q = await query(collectionRef, orderBy("createdAt", "desc"))
-
+                if (search) {
+                    q = await query(
+                        collectionRef, 
+                        where("tagsArray", "array-contains", search), 
+                        orderBy("createdAt", "desc")
+                    )
+                } else {
+                    q = await query(collectionRef, orderBy("createdAt", "desc"))
+                }
                 await onSnapshot(q, (querySnapshot) => {
                     setDocuments(
                         querySnapshot.docs.map((doc) => ({
@@ -51,7 +58,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
     }, [docCollection, search, uid, cancelled])
 
-    useEffect(() =>{
+    useEffect(() => {
         return () => setCancelled(true)
     }, [])
 
