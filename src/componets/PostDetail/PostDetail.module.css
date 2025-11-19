@@ -1,5 +1,6 @@
 .post_detail {
   margin-bottom: 2em;
+  max-width: 615px;
 }
 
 .post_detail img {
@@ -8,12 +9,12 @@
 
 .post_detail h2 {
   margin-bottom: 0.4em;
-  max-width: 615px;
 }
 
 .post_detail .tags {
   margin-bottom: 1.2em;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .tags p {

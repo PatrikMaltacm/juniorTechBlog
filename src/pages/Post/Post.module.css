@@ -1,0 +1,54 @@
+.post_container {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.post_container img {
+  max-width: 100%;
+  margin: 20px 0;
+  border-radius: 8px;
+}
+
+.post_body {
+  text-align: left;
+  margin: 2rem 0;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+/* TEXTO FORMATADO */
+.post_body h1,
+.post_body h2,
+.post_body h3,
+.post_body h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.post_body p {
+  margin: 1rem 0;
+}
+
+.post_body ul,
+.post_body ol {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.post_container h3 {
+  margin-bottom: 0.2em;
+}
+
+.post_container .tags {
+  display: flex;
+  justify-content: center;
+}
+
+.tags p {
+  margin-right: 1em;
+}
+
+.tags span {
+  font-weight: bold;
+}
