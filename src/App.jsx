@@ -21,6 +21,7 @@ import Register from './pages/Register'
 import Dash from './pages/Dashboard'
 import CreatePost from './pages/CreatePost'
 import Search from './pages/Search'
+import Post from './pages/Post'
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/about" element={<About />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/posts/:id" element={<Post />} />
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to={'/'} />}
