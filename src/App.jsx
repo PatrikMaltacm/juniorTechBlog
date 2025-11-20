@@ -41,8 +41,8 @@ function App() {
   }
 
   return (
-    <AuthProvider value={{ user }}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider value={{ user }}>
         <NavBar />
         <div className="container">
           <Routes>
@@ -70,8 +70,8 @@ function App() {
           </Routes>
         </div>
         <Footer />
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   )
 }
 
