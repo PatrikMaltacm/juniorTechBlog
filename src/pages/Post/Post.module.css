@@ -52,3 +52,91 @@
 .tags span {
   font-weight: bold;
 }
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+  .post_container {
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 0 1em;
+  }
+
+  .post_body {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .post_body h1,
+  .post_body h2,
+  .post_body h3,
+  .post_body h4 {
+    margin-top: 0.8rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .post_body ul,
+  .post_body ol {
+    margin-left: 1.5rem;
+  }
+
+  .tags {
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+
+  .tags p {
+    margin-right: 0.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .post_container {
+    max-width: 100%;
+    padding: 0.5em;
+  }
+
+  .post_body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+  }
+
+  .post_body h1 {
+    font-size: 1.5em;
+  }
+
+  .post_body h2 {
+    font-size: 1.3em;
+  }
+
+  .post_body h3,
+  .post_body h4 {
+    font-size: 1.1em;
+  }
+
+  .post_body ul,
+  .post_body ol {
+    margin-left: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .post_container img {
+    margin: 15px 0;
+  }
+
+  .post_container h3 {
+    font-size: 1.2em;
+  }
+
+  .tags {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3em;
+  }
+
+  .tags p {
+    margin-right: 0;
+    font-size: 0.9em;
+  }
+}

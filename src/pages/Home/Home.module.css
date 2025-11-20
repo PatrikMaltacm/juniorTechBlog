@@ -29,3 +29,46 @@
 .noposts a {
   padding: 10px 25px;
 }
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+  .search_form {
+    width: 80%;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .search_form input {
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .home {
+    padding: 1em;
+  }
+
+  .search_form {
+    width: 95%;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-bottom: 1.5em;
+  }
+
+  .search_form input {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .noposts p {
+    margin-bottom: 1em;
+    font-size: 0.95em;
+  }
+
+  .noposts a {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+}

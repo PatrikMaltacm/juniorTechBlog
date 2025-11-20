@@ -31,3 +31,65 @@
   font-size: 0.8em;
   margin-bottom: 1em;
 }
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+  .post_detail {
+    max-width: 95%;
+    margin-bottom: 1.5em;
+  }
+
+  .post_detail img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .post_detail h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .tags {
+    gap: 0.5em;
+  }
+
+  .createdby {
+    font-size: 0.75em;
+  }
+}
+
+@media (max-width: 480px) {
+  .post_detail {
+    max-width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  .post_detail img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .post_detail h2 {
+    font-size: 1.3em;
+    margin-bottom: 0.4em;
+    word-wrap: break-word;
+  }
+
+  .post_detail .tags {
+    margin-bottom: 1em;
+    flex-direction: column;
+    gap: 0.3em;
+  }
+
+  .tags p {
+    margin-right: 0;
+    font-size: 0.9em;
+  }
+
+  .createdby {
+    font-size: 0.7em;
+    margin-bottom: 0.8em;
+  }
+}

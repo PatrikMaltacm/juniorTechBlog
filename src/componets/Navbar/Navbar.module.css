@@ -32,3 +32,52 @@
     background-color: #000;
     color: white;
 }
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5em 1em;
+  }
+
+  .brand {
+    font-size: 1em;
+  }
+
+  .links_list li {
+    margin-right: 0.5em;
+  }
+
+  .links_list li a {
+    padding: 0.3em 0.4em;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5em;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .brand {
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+  }
+
+  .links_list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5em;
+  }
+
+  .links_list li {
+    margin-right: 0.3em;
+  }
+
+  .links_list li a {
+    padding: 0.2em 0.3em;
+    font-size: 0.85em;
+  }
+}

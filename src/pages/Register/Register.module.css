@@ -5,3 +5,16 @@
 .register p{
     color: #aaa
 }
+
+/* RESPONSIVO */
+
+@media (max-width: 480px) {
+  .register {
+    padding: 1em;
+  }
+
+  .register p {
+    font-size: 0.95em;
+    margin-bottom: 1.5em;
+  }
+}
