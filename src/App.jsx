@@ -22,6 +22,7 @@ import Dash from './pages/Dashboard'
 import CreatePost from './pages/CreatePost'
 import Search from './pages/Search'
 import Post from './pages/Post'
+import EditPost from './pages/EditPost'
 
 function App() {
 
@@ -62,6 +63,10 @@ function App() {
             <Route
               path="/posts/create"
               element={user ? <CreatePost /> : <Navigate to={'/login'} />}
+            />
+            <Route
+              path="/posts/edit/:id"
+              element={user ? <EditPost /> : <Navigate to={'/login'} />}
             />
             <Route
               path="/register"

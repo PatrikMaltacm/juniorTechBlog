@@ -1,0 +1,84 @@
+.edit_post {
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.edit_post form {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.edit_post h2 {
+  font-size: 2.2em;
+}
+
+.edit_post p {
+  color: #aaa;
+  margin-bottom: 2em;
+}
+
+/* Preview */
+.edit_post .preview_title {
+  margin-bottom: 0.2em;
+  color: #000;
+  font-weight: bold;
+}
+
+.image_preview {
+  max-width: 100%;
+  margin-bottom: 1em;
+  border-radius: 6px;
+}
+
+/* Editor igual ao CreatePost */
+.editor {
+  margin-top: 10px;
+  margin-bottom: 2rem;
+  background: #fff;
+  border-radius: 6px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .edit_post form {
+    max-width: 95%;
+  }
+
+  .edit_post h2 {
+    font-size: 1.8em;
+  }
+
+  .edit_post p {
+    margin-bottom: 1.5em;
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit_post {
+    padding: 1em;
+  }
+
+  .edit_post form {
+    max-width: 100%;
+  }
+
+  .edit_post h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .edit_post p {
+    margin-bottom: 1em;
+    font-size: 0.9em;
+  }
+
+  .editor {
+    margin-top: 5px;
+    margin-bottom: 1.5rem;
+  }
+
+  .image_preview {
+    border-radius: 4px;
+  }
+}
