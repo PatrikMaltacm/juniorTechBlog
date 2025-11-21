@@ -1,0 +1,59 @@
+import { db } from "../src/firebase/config.js";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { writeFileSync } from "fs";
+import { resolve } from "path";
+
+const generateSitemap = async () => {
+  const baseUrl = "https://devjuniortech.blog";
+
+  // Páginas estáticas
+  const staticPages = [
+    { url: "/", changefreq: "daily", priority: "1.0" },
+    { url: "/about", changefreq: "monthly", priority: "0.8" },
+  ];
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${staticPages
+    .map(
+      (page) => `
+    <url>
+      <loc>${baseUrl}${page.url}</loc>
+      <changefreq>${page.changefreq}</changefreq>
+      <priority>${page.priority}</priority>
+    </url>
+  `
+    )
+    .join("")}
+  ${await generatePostUrls(baseUrl)}
+</urlset>`;
+
+  const sitemapPath = resolve(process.cwd(), "public", "sitemap.xml");
+  writeFileSync(sitemapPath, sitemap);
+
+  console.log("sitemap.xml gerado com sucesso em public/sitemap.xml");
+};
+
+const generatePostUrls = async (baseUrl) => {
+  const postsCollection = collection(db, "posts");
+  const postsQuery = query(postsCollection, orderBy("createdAt", "desc"));
+  const querySnapshot = await getDocs(postsQuery);
+
+  return querySnapshot.docs
+    .map((doc) => {
+      const post = doc.data();
+      // Use a data do post se disponível, senão a data atual
+      const lastmod = post.createdAt?.toDate()?.toISOString() || new Date().toISOString();
+      return `
+    <url>
+      <loc>${baseUrl}/posts/${doc.id}</loc>
+      <lastmod>${lastmod}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+    </url>
+  `;
+    })
+    .join("");
+};
+
+generateSitemap().catch(console.error);
