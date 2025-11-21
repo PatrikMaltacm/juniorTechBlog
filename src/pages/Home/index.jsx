@@ -6,21 +6,23 @@ import { useState } from "react"
 import { useFetchDocuments } from "../../hooks/useFetchDocuments"
 
 // Components
-import PostDetail from "../../componets/PostDetail"
+import PostDetail from "../../components/PostDetail"
 
+
+import Skeleton from "../../components/Skeleton";
 
 function Home() {
-  const [query, setQuery] = useState("")
-  const { documents: posts, loading} = useFetchDocuments("posts")
-  const navigate = useNavigate()
+  const [query, setQuery] = useState("");
+  const { documents: posts, loading } = useFetchDocuments("posts", null, null, 5);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(query){
-      return navigate(`/search?q=${query}`)
+    if (query) {
+      return navigate(`/search?q=${query}`);
     }
-  }
+  };
 
   return (
     <div className={styles.home}>
@@ -36,19 +38,20 @@ function Home() {
       </form>
 
       <div>
-        {loading && <p>Carregando posts...</p>}
-        {posts && posts.map((post) => (
-          <PostDetail key={post.id} post={post} />
-        ))}
+        {loading && <Skeleton />}
+        {posts &&
+          posts.map((post) => <PostDetail key={post.id} post={post} />)}
         {posts && posts.length === 0 && (
           <div className={styles.noposts}>
             <p>Não foram encontrados posts</p>
-            <Link to={'/posts/create'} className="btn">Seja o primeiro a criar uma postagem</Link>
+            <Link to={"/posts/create"} className="btn">
+              Seja o primeiro a criar uma postagem
+            </Link>
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }
 
 export default Home

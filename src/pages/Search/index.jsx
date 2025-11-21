@@ -6,7 +6,7 @@ import { useFetchDocuments } from "../../hooks/useFetchDocuments"
 import { useQuery } from "../../hooks/useQuery"
 
 //components
-import PostDetail from "../../componets/PostDetail";
+import PostDetail from "../../components/PostDetail";
 
 function Search() {
   const query = useQuery()

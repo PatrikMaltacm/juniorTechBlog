@@ -14,8 +14,8 @@ import { AuthProvider } from './context/AuthContext'
 // pages and components
 import Home from './pages/Home'
 import About from './pages/About'
-import NavBar from './componets/Navbar'
-import Footer from './componets/Footer'
+import NavBar from './components/Navbar'
+import Footer from './components/Footer'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dash from './pages/Dashboard'
@@ -24,9 +24,11 @@ import Search from './pages/Search'
 import Post from './pages/Post'
 import EditPost from './pages/EditPost'
 
-function App() {
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 
-  const [user, setUser] = useState(undefined)
+function App() {
+  const [user, setUser] = useState(undefined);
   const { auth } = useAuthentication();
 
   const loadingUser = user === undefined;
@@ -34,11 +36,11 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
-    })
-  }, [auth])
+    });
+  }, [auth]);
 
   if (loadingUser) {
-    return <p>Carregando...</p>
+    return <p>Carregando...</p>;
   }
 
   return (
@@ -54,30 +56,50 @@ function App() {
             <Route path="/posts/:id" element={<Post />} />
             <Route
               path="/login"
-              element={!user ? <Login /> : <Navigate to={'/'} />}
-            />
-            <Route
-              path="/dashboard"
-              element={user ? <Dash /> : <Navigate to={'/login'} />}
-            />
-            <Route
-              path="/posts/create"
-              element={user ? <CreatePost /> : <Navigate to={'/login'} />}
-            />
-            <Route
-              path="/posts/edit/:id"
-              element={user ? <EditPost /> : <Navigate to={'/login'} />}
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
             />
             <Route
               path="/register"
-              element={!user ? <Register /> : <Navigate to={'/'} />}
+              element={
+                <PublicRoute>
+                  <Register />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dash />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/posts/create"
+              element={
+                <ProtectedRoute>
+                  <CreatePost />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/posts/edit/:id"
+              element={
+                <ProtectedRoute>
+                  <EditPost />
+                </ProtectedRoute>
+              }
             />
           </Routes>
         </div>
         <Footer />
       </AuthProvider>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App

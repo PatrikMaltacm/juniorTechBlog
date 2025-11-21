@@ -1,0 +1,46 @@
+.skeleton {
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+  }
+  
+  .skeleton_post {
+    margin-bottom: 1.5em;
+  }
+  
+  .skeleton_title {
+    height: 28px;
+    width: 60%;
+    margin-bottom: 10px;
+  }
+  
+  .skeleton_author {
+    height: 16px;
+    width: 40%;
+    margin-bottom: 20px;
+  }
+  
+  .skeleton_tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .skeleton_tag {
+    height: 24px;
+    width: 80px;
+  }
+  
+  .skeleton_button {
+    height: 40px;
+    width: 120px;
+  }
+  
+  @keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+  }
+  
