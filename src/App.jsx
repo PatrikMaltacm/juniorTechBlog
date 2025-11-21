@@ -1,17 +1,10 @@
 import './App.css'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-
-// Firebase
 import { onAuthStateChanged } from 'firebase/auth'
-
-// Hooks
 import { useState, useEffect } from 'react'
 import { useAuthentication } from './hooks/useAuthentication'
-
-//context
 import { AuthProvider } from './context/AuthContext'
 
-// pages and components
 import Home from './pages/Home'
 import About from './pages/About'
 import NavBar from './components/Navbar'
@@ -23,9 +16,9 @@ import CreatePost from './pages/CreatePost'
 import Search from './pages/Search'
 import Post from './pages/Post'
 import EditPost from './pages/EditPost'
-
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import EmailVerificationBanner from './components/EmailVerificator'
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -47,6 +40,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider value={{ user }}>
         <NavBar />
+        <EmailVerificationBanner />
         <div className="container">
           <Routes>
             <Route path="/" element={<Home />} />

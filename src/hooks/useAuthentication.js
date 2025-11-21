@@ -5,8 +5,9 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
+  sendEmailVerification,
 } from "firebase/auth";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export const useAuthentication = () => {
   const [error, setError] = useState(null);
@@ -24,6 +25,9 @@ export const useAuthentication = () => {
         data.password
       );
       await updateProfile(user, { displayName: data.displayName });
+      
+      await sendEmailVerification(user);
+
       setLoading(false);
       return user;
     } catch (error) {

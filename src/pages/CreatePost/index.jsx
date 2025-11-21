@@ -1,6 +1,6 @@
 import styles from "./CreatePost.module.css";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
@@ -9,11 +9,31 @@ import JoditEditor from "jodit-react";
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
-  const [body, setBody] = useState("");   // agora HTML
+  const [body, setBody] = useState("");
   const [tags, setTags] = useState([]);
   const [formError, setFormError] = useState("");
 
   const editor = useRef(null);
+
+  const editorConfig = useMemo(
+    () => ({
+      readonly: false,
+      placeholder: 'Escreva aqui o conteúdo da sua postagem...',
+      height: 600,
+      buttons: [
+        'bold', 'italic', 'underline', 'strikethrough', '|',
+        'ul', 'ol', '|',
+        'font', 'fontsize', 'brush', 'paragraph', '|',
+        'image', 'table', 'link', '|',
+        'left', 'center', 'right', 'justify', '|',
+        'undo', 'redo', '|',
+        'hr', 'eraser', 'fullsize', 'source'
+      ],
+      askBeforePasteFromWord: false,
+      askBeforePasteHTML: false,
+    }),
+    []
+  );
 
   const { user } = useAuthValue();
   const navigate = useNavigate();
@@ -23,7 +43,6 @@ const CreatePost = () => {
     e.preventDefault();
     setFormError("");
 
-    // validate image
     try {
       new URL(image);
     } catch (error) {
@@ -39,7 +58,7 @@ const CreatePost = () => {
     insertDocument({
       title,
       image,
-      body, // sai como HTML
+      body,
       tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
@@ -80,11 +99,13 @@ const CreatePost = () => {
 
         <label>
           <span>Conteúdo</span>
-
           <JoditEditor
             ref={editor}
             value={body}
-            onChange={(newContent) => setBody(newContent)}
+            config={editorConfig}
+            tabIndex={1}
+            onBlur={(newContent) => setBody(newContent)}
+            onChange={() => { }}
             className={styles.editor}
           />
         </label>

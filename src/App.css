@@ -17,3 +17,22 @@
     margin-bottom: 3em;
   }
 }
+
+.email-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ffeeba;
+  width: 100%;
+}
+
+.email-warning button {
+  margin-left: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #856404;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #856404;
+}

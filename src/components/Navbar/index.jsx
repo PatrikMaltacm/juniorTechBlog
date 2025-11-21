@@ -55,7 +55,7 @@ const NavBar = () => {
             </li>
           </>
         )}
-        {user && (
+        {user && user.emailVerified && (
           <>
             <li>
               <NavLink
