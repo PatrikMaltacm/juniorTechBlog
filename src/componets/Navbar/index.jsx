@@ -13,7 +13,7 @@ const NavBar = () => {
     return (
         <nav className={styles.navbar}>
             <NavLink className={styles.brand} to={'/'}>
-                Junior <span>TechBlog</span>
+                DevJunior <span>TechBlog</span>
             </NavLink>
             <ul className={styles.links_list}>
                 <li className={styles}>
@@ -67,5 +67,6 @@ const NavBar = () => {
         </nav>
     )
 }
+
 
 export default NavBar
