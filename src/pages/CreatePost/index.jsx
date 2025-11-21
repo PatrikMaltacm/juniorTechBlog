@@ -18,17 +18,29 @@ const CreatePost = () => {
   const editorConfig = useMemo(
     () => ({
       readonly: false,
-      placeholder: 'Escreva aqui o conteúdo da sua postagem...',
+      placeholder: 'Escreva aqui...',
       height: 600,
+      statusbar: false,
+      toolbarAdaptive: false,
       buttons: [
-        'bold', 'italic', 'underline', 'strikethrough', '|',
+        'bold', 'italic', '|',
         'ul', 'ol', '|',
-        'font', 'fontsize', 'brush', 'paragraph', '|',
-        'image', 'table', 'link', '|',
-        'left', 'center', 'right', 'justify', '|',
-        'undo', 'redo', '|',
-        'hr', 'eraser', 'fullsize', 'source'
+        'paragraph', '|', 
+        'image', 'link', '|',
+        'hr', 'source'
       ],
+      extraStyle: `
+        pre {
+          background-color: #1e1e1e;
+          color: #d4d4d4;
+          padding: 15px;
+          border-radius: 6px;
+          font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+          overflow-x: auto;
+          border: 1px solid #333;
+          margin: 10px 0;
+        }
+      `,
       askBeforePasteFromWord: false,
       askBeforePasteHTML: false,
     }),

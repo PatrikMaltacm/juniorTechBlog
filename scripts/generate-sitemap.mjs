@@ -31,7 +31,6 @@ const generateSitemap = async () => {
   const sitemapPath = resolve(process.cwd(), "public", "sitemap.xml");
   writeFileSync(sitemapPath, sitemap);
 
-  console.log("sitemap.xml gerado com sucesso em public/sitemap.xml");
 };
 
 const generatePostUrls = async (baseUrl) => {
