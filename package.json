@@ -11,8 +11,10 @@
     "sitemap": "node scripts/generate-sitemap.mjs"
   },
   "dependencies": {
+    "dompurify": "^3.3.0",
     "firebase": "^12.6.0",
     "jodit-react": "^5.2.38",
+    "jsdo": "^4.3.12",
     "prop-types": "^15.8.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

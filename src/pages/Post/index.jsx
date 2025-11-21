@@ -1,5 +1,6 @@
 import styles from "./Post.module.css";
 
+import DOMPurify from "dompurify";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useParams } from "react-router-dom";
 import SEOHead from "../../components/SEOHead";
@@ -34,7 +35,7 @@ const Post = () => {
             {/* AQUI EXIBE O HTML DO EDITOR */}
             <div
               className={styles.post_body}
-              dangerouslySetInnerHTML={{ __html: post.body }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.body) }}
             />
 
             <h3>Este post trata sobre:</h3>

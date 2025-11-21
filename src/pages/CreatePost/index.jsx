@@ -5,6 +5,7 @@ import { useInsertDocument } from "../../hooks/useInsertDocument";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
 import JoditEditor from "jodit-react";
+import DOMPurify from "dompurify";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -27,7 +28,7 @@ const CreatePost = () => {
         'ul', 'ol', '|',
         'paragraph', '|', 
         'image', 'link', '|',
-        'hr', 'source'
+        'hr', 
       ],
       extraStyle: `
         pre {
@@ -70,7 +71,7 @@ const CreatePost = () => {
     insertDocument({
       title,
       image,
-      body,
+      body: DOMPurify.sanitize(body),
       tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
