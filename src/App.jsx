@@ -16,6 +16,7 @@ import CreatePost from './pages/CreatePost'
 import Search from './pages/Search'
 import Post from './pages/Post'
 import EditPost from './pages/EditPost'
+import Profile from './pages/Profile'
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import EmailVerificationBanner from './components/EmailVerificator'
@@ -88,6 +89,15 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
         <Footer />

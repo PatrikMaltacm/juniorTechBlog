@@ -87,14 +87,29 @@ const NavBar = () => {
           </NavLink>
         </li>
         {user && (
-          <>
-            <li className={styles.welcome_message}>
+          <li className={styles.user_dropdown}>
+            <span className={styles.user_name}>
               Olá, {user.displayName}!
-            </li>
-            <li>
-              <button onClick={logout}>Sair</button>
-            </li>
-          </>
+            </span>
+            <div className={styles.dropdown_menu}>
+              <NavLink
+                to="/profile"
+                className={styles.dropdown_item}
+                onClick={() => setMenuOpen(false)}
+              >
+                Ver Perfil
+              </NavLink>
+              <button
+                onClick={() => {
+                  logout();
+                  setMenuOpen(false);
+                }}
+                className={styles.dropdown_item}
+              >
+                Sair
+              </button>
+            </div>
+          </li>
         )}
       </ul>
     </nav>
