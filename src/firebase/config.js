@@ -3,13 +3,13 @@ import { getAnalytics, isSupported } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAVcRV9gCLt7pL814GNLMKtp_KEAdJfkYY",
-  authDomain: "blog-47657.firebaseapp.com",
-  projectId: "blog-47657",
-  storageBucket: "blog-47657.firebasestorage.app",
-  messagingSenderId: "198889981638",
-  appId: "1:198889981638:web:bdb34095fb356f5b29f9c7",
-  measurementId: "G-GRDJMTJLB9"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
@@ -22,6 +22,5 @@ isSupported().then((isSupported) => {
     analytics = getAnalytics(app);
   }
 });
-
 
 export { app, analytics, db };
