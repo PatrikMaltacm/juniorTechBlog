@@ -48,6 +48,7 @@ export const useInsertDocument = (docCollection) => {
                 payload: insertedDocument,
             });
         } catch (error) {
+            console.error("Erro no insertDocument:", error);
             checkCancelBeforeDispatch({ type: "ERROR", payload: error.message });
         }
     };

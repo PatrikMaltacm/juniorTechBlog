@@ -16,6 +16,10 @@ const PostDetail = ({ post }) => {
           </p>
         ))}
       </div>
+      <div className={styles.stats}>
+        <p>❤️ {post.likes ? post.likes.length : 0}</p>
+        <p>💬 {post.commentsCount ? post.commentsCount : 0}</p>
+      </div>
       <Link to={`/posts/${post.id}`} className="btn btn-outline">
         Ler
       </Link>

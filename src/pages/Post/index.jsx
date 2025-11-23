@@ -4,6 +4,9 @@ import DOMPurify from "dompurify";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useParams } from "react-router-dom";
 import SEOHead from "../../components/SEOHead";
+import CommentForm from "../../components/CommentForm";
+import CommentList from "../../components/CommentList";
+import LikeButton from "../../components/LikeButton";
 
 const Post = () => {
   const { id } = useParams();
@@ -30,6 +33,7 @@ const Post = () => {
         {post && (
           <>
             <h1>{post.title}</h1>
+            <LikeButton post={post} />
             <img src={post.image} alt={post.title} />
 
             {/* AQUI EXIBE O HTML DO EDITOR */}
@@ -48,6 +52,9 @@ const Post = () => {
                 </p>
               ))}
             </div>
+
+            <CommentForm postId={post.id} />
+            <CommentList postId={post.id} />
           </>
         )}
       </div>

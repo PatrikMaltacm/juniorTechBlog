@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { db } from "../firebase/config";
 
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
 
 export const useFetchDocument = (docCollection, id) => {
     const [document, setDocument] = useState(null);
@@ -20,17 +20,20 @@ export const useFetchDocument = (docCollection, id) => {
             setLoading(true)
 
             try {
+                const docRef = doc(db, docCollection, id);
+                const unsubscribe = onSnapshot(docRef, (docSnap) => {
+                    setDocument({
+                        id: docSnap.id,
+                        ...docSnap.data(),
+                    });
+                    setLoading(false);
+                });
 
-                const docRef = await doc(db, docCollection, id)
-                const docSnap = await getDoc(docRef)
-
-                setDocument(docSnap.data())
-                setLoading(false)
-
+                return () => unsubscribe(); // Cleanup listener on unmount or id change
             } catch (error) {
-                setError(error.message)
-                console.log(error)
-                setLoading(false)
+                console.log(error);
+                setError(error.message);
+                setLoading(false);
             }
         }
 

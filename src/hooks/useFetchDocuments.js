@@ -28,11 +28,7 @@ export const useFetchDocuments = (
       let q;
 
       if (search) {
-        q = query(
-          collectionRef,
-          where("tagsArray", "array-contains", search),
-          orderBy("createdAt", "desc")
-        );
+        q = query(collectionRef, orderBy("createdAt", "desc"));
       } else if (uid) {
         q = query(
           collectionRef,
@@ -40,20 +36,23 @@ export const useFetchDocuments = (
           orderBy("createdAt", "desc")
         );
       } else {
-        q = query(
-          collectionRef,
-          orderBy("createdAt", "desc"),
-          limit(pageLimit)
-        );
+        q = query(collectionRef, orderBy("createdAt", "desc"));
       }
 
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
-        setDocuments(
-          querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }))
-        );
+        let docs = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        if (search) {
+          docs = docs.filter((doc) =>
+            doc.title.toLowerCase().includes(search.toLowerCase()) ||
+            doc.tagsArray.some((tag) => tag.toLowerCase().includes(search.toLowerCase()))
+          );
+        }
+
+        setDocuments(docs);
         setLoading(false);
       });
 

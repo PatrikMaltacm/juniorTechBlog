@@ -1,0 +1,21 @@
+.like_btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    transition: 0.3s;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.like_btn:hover {
+    color: #ff4d4d;
+}
+
+.liked {
+    color: #ff4d4d;
+}

@@ -32,7 +32,7 @@ function Home() {
         <form onSubmit={handleSubmit} className={styles.search_form}>
           <input
             type="text"
-            placeholder="Busca por tags"
+            placeholder="Buscar por tags ou titulos"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
