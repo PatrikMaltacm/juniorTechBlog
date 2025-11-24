@@ -26,9 +26,10 @@ const CreatePost = () => {
       buttons: [
         'bold', 'italic', '|',
         'ul', 'ol', '|',
-        'paragraph', '|', 
+        'paragraph', '|',
+        'align', '|',
         'image', 'link', '|',
-        'hr', 
+        'hr'
       ],
       extraStyle: `
         pre {
