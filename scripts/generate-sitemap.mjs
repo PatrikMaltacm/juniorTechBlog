@@ -1,12 +1,24 @@
-import { db } from "../src/firebase/config.js";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs, orderBy, query } from "firebase/firestore";
 import { writeFileSync } from "fs";
 import { resolve } from "path";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAVcRV9gCLt7pL814GNLMKtp_KEAdJfkYY",
+  authDomain: "blog-47657.firebaseapp.com",
+  projectId: "blog-47657",
+  storageBucket: "blog-47657.firebasestorage.app",
+  messagingSenderId: "198889981638",
+  appId: "1:198889981638:web:bdb34095fb356f5b29f9c7",
+  measurementId: "G-GRDJMTJLB9"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const generateSitemap = async () => {
   const baseUrl = "https://devjuniortech.blog";
 
-  // Páginas estáticas
   const staticPages = [
     { url: "/", changefreq: "daily", priority: "1.0" },
     { url: "/about", changefreq: "monthly", priority: "0.8" },
@@ -30,7 +42,7 @@ const generateSitemap = async () => {
 
   const sitemapPath = resolve(process.cwd(), "public", "sitemap.xml");
   writeFileSync(sitemapPath, sitemap);
-
+  process.exit(0);
 };
 
 const generatePostUrls = async (baseUrl) => {
@@ -41,7 +53,6 @@ const generatePostUrls = async (baseUrl) => {
   return querySnapshot.docs
     .map((doc) => {
       const post = doc.data();
-      // Use a data do post se disponível, senão a data atual
       const lastmod = post.createdAt?.toDate()?.toISOString() || new Date().toISOString();
       return `
     <url>
@@ -55,4 +66,7 @@ const generatePostUrls = async (baseUrl) => {
     .join("");
 };
 
-generateSitemap().catch(console.error);
+generateSitemap().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
