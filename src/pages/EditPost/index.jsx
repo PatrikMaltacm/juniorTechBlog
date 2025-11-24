@@ -45,8 +45,9 @@ const EditPost = () => {
         'bold', 'italic', '|',
         'ul', 'ol', '|',
         'paragraph', '|',
+        'align', '|',
         'image', 'link', '|',
-        'hr', 
+        'hr'
       ],
       extraStyle: `
         pre {
