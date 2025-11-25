@@ -70,6 +70,7 @@
   color: var(--text-color);
   padding: 0.4em 0.6em;
   display: block;
+  user-select: none;
 }
 
 .dropdown_menu {
@@ -87,7 +88,7 @@
   border: 1px solid var(--border-color);
 }
 
-.user_dropdown:hover .dropdown_menu {
+.user_dropdown.active .dropdown_menu {
   display: flex;
 }
 
@@ -145,15 +146,16 @@
     width: 100%;
   }
 
-  .user_dropdown:hover .dropdown_menu {
-    display: none;
-  }
-
   .user_dropdown .dropdown_menu {
     position: static;
     box-shadow: none;
-    display: flex;
+    display: none;
     background-color: rgba(0, 0, 0, 0.05);
     width: 100%;
+    border: none;
+  }
+
+  .user_dropdown.active .dropdown_menu {
+    display: flex;
   }
 }

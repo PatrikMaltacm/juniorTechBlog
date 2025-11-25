@@ -9,6 +9,10 @@
   max-height: 100vh;
 }
 
+.create_post input {
+  padding: 1rem;
+}
+
 .create_post h2 {
   font-size: 2.2em;
 }
