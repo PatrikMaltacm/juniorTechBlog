@@ -8,9 +8,14 @@ const NavBar = () => {
   const { user } = useAuthValue();
   const { logout } = useAuthentication();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
   };
 
   return (
@@ -87,22 +92,31 @@ const NavBar = () => {
           </NavLink>
         </li>
         {user && (
-          <li className={styles.user_dropdown}>
-            <span className={styles.user_name}>
+          <li className={`${styles.user_dropdown} ${dropdownOpen ? styles.active : ""}`}>
+            <span
+              className={styles.user_name}
+              onClick={toggleDropdown}
+            >
               Olá, {user.displayName}!
             </span>
             <div className={styles.dropdown_menu}>
               <NavLink
                 to="/profile"
                 className={styles.dropdown_item}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setDropdownOpen(false);
+                }}
               >
                 Ver Perfil
               </NavLink>
               <NavLink
                 to="/settings"
                 className={styles.dropdown_item}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setDropdownOpen(false);
+                }}
               >
                 Configurações
               </NavLink>
@@ -110,6 +124,7 @@ const NavBar = () => {
                 onClick={() => {
                   logout();
                   setMenuOpen(false);
+                  setDropdownOpen(false);
                 }}
                 className={styles.dropdown_item}
               >

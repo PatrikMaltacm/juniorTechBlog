@@ -39,7 +39,7 @@ function Home() {
           <button className="btn">Pesquisar</button>
         </form>
 
-        <div>
+        <div className={styles.posts}>
           {loading && <Skeleton />}
           {posts &&
             posts.map((post) => <PostDetail key={post.id} post={post} />)}
