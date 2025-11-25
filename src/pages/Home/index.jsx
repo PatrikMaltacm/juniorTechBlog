@@ -36,7 +36,7 @@ function Home() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button className="btn btn-dark">Pesquisar</button>
+          <button className="btn">Pesquisar</button>
         </form>
 
         <div>

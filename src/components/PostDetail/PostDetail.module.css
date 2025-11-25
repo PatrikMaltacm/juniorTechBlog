@@ -3,7 +3,6 @@
 }
 
 .post_detail img {
-  max-width: 600px;
   width: 100%;
   height: 300px;
   object-fit: cover;

@@ -99,6 +99,13 @@ const NavBar = () => {
               >
                 Ver Perfil
               </NavLink>
+              <NavLink
+                to="/settings"
+                className={styles.dropdown_item}
+                onClick={() => setMenuOpen(false)}
+              >
+                Configurações
+              </NavLink>
               <button
                 onClick={() => {
                   logout();
