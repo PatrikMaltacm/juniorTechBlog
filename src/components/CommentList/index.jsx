@@ -65,7 +65,7 @@ const CommentList = ({ postId }) => {
                                 onChange={(e) => setEditText(e.target.value)}
                             />
                             <div className={styles.actions}>
-                                <button className="btn btn-dark" onClick={handleCancelEdit}>Cancelar</button>
+                                <button className="btn btn-outline" onClick={handleCancelEdit}>Cancelar</button>
                                 <button className="btn" onClick={handleSaveEdit}>Salvar</button>
                             </div>
                         </div>

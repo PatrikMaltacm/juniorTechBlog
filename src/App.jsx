@@ -17,9 +17,11 @@ import Search from './pages/Search'
 import Post from './pages/Post'
 import EditPost from './pages/EditPost'
 import Profile from './pages/Profile'
+import Settings from './pages/Settings'
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import EmailVerificationBanner from './components/EmailVerificator'
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -40,67 +42,77 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider value={{ user }}>
-        <NavBar />
-        <EmailVerificationBanner />
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/posts/:id" element={<Post />} />
-            <Route
-              path="/login"
-              element={
-                <PublicRoute>
-                  <Login />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <PublicRoute>
-                  <Register />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <Dash />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/posts/create"
-              element={
-                <ProtectedRoute>
-                  <CreatePost />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/posts/edit/:id"
-              element={
-                <ProtectedRoute>
-                  <EditPost />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </div>
-        <Footer />
+        <ThemeProvider>
+          <NavBar />
+          <EmailVerificationBanner />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/posts/:id" element={<Post />} />
+              <Route
+                path="/login"
+                element={
+                  <PublicRoute>
+                    <Login />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/register"
+                element={
+                  <PublicRoute>
+                    <Register />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dash />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/posts/create"
+                element={
+                  <ProtectedRoute>
+                    <CreatePost />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/posts/edit/:id"
+                element={
+                  <ProtectedRoute>
+                    <EditPost />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/settings"
+                element={
+                  <ProtectedRoute>
+                    <Settings />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </div>
+          <Footer />
+        </ThemeProvider>
       </AuthProvider>
     </BrowserRouter>
   );

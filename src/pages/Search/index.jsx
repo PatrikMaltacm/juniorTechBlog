@@ -29,7 +29,7 @@ function Search() {
           {posts && posts.length === 0 && (
             <div className={styles.noposts}>
               <p>Nennhum post encontrado para: {search}</p>
-              <Link to={"/"} className="btn btn-dark">
+              <Link to={"/"} className="btn">
                 Voltar
               </Link>
             </div>
