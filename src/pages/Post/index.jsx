@@ -1,5 +1,4 @@
 import styles from "./Post.module.css";
-
 import DOMPurify from "dompurify";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useParams } from "react-router-dom";
@@ -10,33 +9,36 @@ import LikeButton from "../../components/LikeButton";
 
 const Post = () => {
   const { id } = useParams();
-  const { document: post } = useFetchDocument("posts", id);
+  const { document: post, loading } = useFetchDocument("posts", id);
 
-  // Remove HTML tags and limit description length
   const getDescription = (html) => {
     if (!html) return "";
     const cleanText = html.replace(/<[^>]*>?/gm, " ");
     return cleanText.length > 155 ? cleanText.substring(0, 152) + "..." : cleanText;
   };
 
+  const pageTitle = post?.title || "Carregando artigo...";
+  const pageDescription = post?.body ? getDescription(post.body) : "Lendo conteúdo do DevJunior TechBlog...";
+  const pageImage = post?.image || "https://devjuniortech.blog/logo-padrao.png"; 
+
   return (
     <>
-      {post && (
-        <SEOHead
-          title={post.title}
-          description={getDescription(post.body)}
-          image={post.image}
-          url={`/posts/${id}`}
-        />
-      )}
+      <SEOHead
+        title={pageTitle}
+        description={pageDescription}
+        image={pageImage}
+        url={`/posts/${id}`}
+      />
+      
       <div className={styles.post_container}>
+        {loading && <p className={styles.loading}>Carregando post...</p>}
+        
         {post && (
           <>
             <h1>{post.title}</h1>
             <LikeButton post={post} />
             <img src={post.image} alt={post.title} />
 
-            {/* AQUI EXIBE O HTML DO EDITOR */}
             <div
               className={styles.post_body}
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.body) }}
