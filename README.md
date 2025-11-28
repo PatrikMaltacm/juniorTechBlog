@@ -65,8 +65,3 @@ Please see the `CONTRIBUTING.md` file for detailed guidelines on how to contribu
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-## Contact
-
-Your Name - your_email@example.com
-Project Link: [https://github.com/your-username/juniorTechBlog](https://github.com/your-username/juniorTechBlog) # Replace with your actual repo URL
