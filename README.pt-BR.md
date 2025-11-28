@@ -65,8 +65,3 @@ Por favor, consulte o arquivo `CONTRIBUTING.md` para diretrizes detalhadas sobre
 ## Licença
 
 Distribuído sob a Licença MIT. Consulte `LICENSE` para mais informações.
-
-## Contato
-
-Seu Nome - seu_email@example.com
-Link do Projeto: [https://github.com/seu-usuario/juniorTechBlog](https://github.com/seu-usuario/juniorTechBlog) # Substitua pela URL real do seu repositório
