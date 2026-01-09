@@ -21,7 +21,7 @@ const NavBar = () => {
   return (
     <nav className={styles.navbar}>
       <NavLink className={styles.brand} to={"/"}>
-        DevJunior <span>TechBlog</span>
+        Draft<span>Dev</span>
       </NavLink>
       <div className={styles.menu_toggle} onClick={toggleMenu}>
         <span></span>

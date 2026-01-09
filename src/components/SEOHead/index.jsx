@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 
 function SEOHead({ title, description, image, url }) {
   const defaultDescription = "O seu blog de tecnologia para desenvolvedores júnior.";
-  const defaultTitle = "Junior Tech Blog";
-  const siteName = "Junior Tech Blog";
+  const defaultTitle = "DraftDev";
+  const siteName = "DraftDev";
   const fullTitle = title ? `${title} | ${defaultTitle}` : defaultTitle;
   const fullDescription = description || defaultDescription;
   const fullUrl = url ? `https://devjuniortech.blog${url}` : "https://devjuniortech.blog";

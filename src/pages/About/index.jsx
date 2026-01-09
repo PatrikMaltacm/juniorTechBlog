@@ -7,13 +7,13 @@ function About() {
   return (
     <>
       <SEOHead
-        title="Sobre o Junior Tech Blog"
-        description="Saiba mais sobre o Junior Tech Blog, um projeto para estudo de React e Firebase."
+        title="Sobre o DraftDev"
+        description="Saiba mais sobre o DraftDev, um projeto para estudo de React e Firebase."
         url="/about"
       />
       <div className={styles.about}>
         <h2>
-          Sobre o Junior <span>TechBlog</span>
+          Sobre o Draft<span>DEV</span>
         </h2>
         <p>
           Esse projeto consiste em um blog feito pelo desenvolvedor Patrik Malta

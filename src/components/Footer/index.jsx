@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footer_content}>
         <div className={styles.brand}>
-          <h3>DevJunior <span>TechBlog</span></h3>
+          <h3>Draft<span>DEV</span></h3>
           <p>Compartilhe seu conhecimento com o mundo!</p>
         </div>
         <div className={styles.links}>
@@ -21,14 +21,15 @@ const Footer = () => {
           <p>Siga-nos nas redes sociais para novidades.</p>
           {/* Placeholder for icons */}
           <div className={styles.social_icons}>
-            <span>Instagram</span>
-            <span>Twitter</span>
-            <span>LinkedIn</span>
+            <span><a href="https://www.instagram.com/draft_dev?igsh=MW9ka3Izb2l5NjhwYQ==" target="blank">Instagram</a></span>
+            {/* <span>Twitter</span> */}
+            <span><a href="https://www.linkedin.com/in/patrik-malta-1160552b6/" target="blank">Linkedin</a></span>
           </div>
         </div>
       </div>
+      {/* <NewsletterForm /> */}
       <div className={styles.copyright}>
-        <p>Junior TechBlog &copy; 2025 - Todos os direitos reservados.</p>
+        <p>DraftDev &copy; 2025 - Todos os direitos reservados.</p>
       </div>
     </footer>
   )
