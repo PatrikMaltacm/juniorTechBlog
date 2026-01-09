@@ -1,4 +1,5 @@
 import styles from "./Footer.module.css"
+import NewsletterForm from '../NewsletterForm';
 
 const Footer = () => {
   return (
@@ -27,6 +28,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <NewsletterForm />
       <div className={styles.copyright}>
         <p>Junior TechBlog &copy; 2025 - Todos os direitos reservados.</p>
       </div>
