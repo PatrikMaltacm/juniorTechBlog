@@ -11,6 +11,13 @@
     "sitemap": "node scripts/generate-sitemap.mjs"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.7",
+    "@mui/material": "^7.3.7",
+    "@mui/styled-engine": "^7.3.7",
+    "@mui/styled-engine-sc": "^7.3.7",
+    "@supabase/supabase-js": "^2.90.1",
     "dompurify": "^3.3.0",
     "firebase": "^12.6.0",
     "jodit-react": "^5.2.38",
@@ -18,7 +25,8 @@
     "prop-types": "^15.8.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.9.6"
+    "react-router-dom": "^7.9.6",
+    "styled-components": "^6.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
